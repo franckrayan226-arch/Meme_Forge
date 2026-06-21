@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeForge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-left">
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="logo">
+                <span class="logo-icon">MF</span>
+                <span class="logo-text">MemeForge</span>
+            </div>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-ghost" id="saveBtn">Sauvegarder</button>
+            <button class="btn btn-ghost" id="shareBtn">Partager</button>
+            <button class="btn btn-primary" id="exportBtn">Exporter</button>
+        </div>
+    </header>
+
+    <div class="app-wrapper">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>Templates</h2>
+                <label class="btn btn-sm btn-ghost" for="uploadInput">
+                    Importer
+                </label>
+                <input type="file" id="uploadInput" accept="image/*" hidden>
+            </div>
+            <div class="templates-grid" id="templatesGrid"></div>
+        </aside>
+
+        <main class="editor-area">
+            <div class="canvas-wrapper">
+                <div class="canvas-container" id="canvasContainer">
+                    <canvas id="memeCanvas"></canvas>
+                    <div class="canvas-overlay" id="canvasOverlay">
+                        <span class="drop-text">Deposez une image ici</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-wrapper">
+                <div class="controls-panel">
+                    <div class="control-group">
+                        <label>Texte du haut</label>
+                        <input type="text" id="topText" placeholder="Texte superieur" autocomplete="off">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label>Texte du bas</label>
+                        <input type="text" id="bottomText" placeholder="Texte inferieur" autocomplete="off">
+                    </div>
+
+                    <div class="control-row">
+                        <div class="control-group half">
+                            <label>Taille</label>
+                            <div class="range-wrap">
+                                <input type="range" id="fontSize" min="20" max="120" value="40">
+                                <span class="range-value" id="fontSizeVal">40</span>
+                            </div>
+                        </div>
+                        <div class="control-group half">
+                            <label>Couleur</label>
+                            <div class="color-wrap">
+                                <input type="color" id="textColor" value="#ffffff">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Police</label>
+                        <select id="fontFamily">
+                            <option value="Impact">Impact</option>
+                            <option value="Arial Black">Arial Black</option>
+                            <option value="Comic Sans MS">Comic Sans</option>
+                            <option value="Courier New">Courier</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Contour</label>
+                        <div class="range-wrap">
+                            <input type="range" id="strokeWidth" min="0" max="8" value="2">
+                            <span class="range-value" id="strokeWidthVal">2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="gallery-drawer" id="galleryDrawer">
+        <div class="gallery-header">
+            <h2>Ma Galerie</h2>
+            <button class="btn btn-sm btn-ghost" id="closeGallery">Fermer</button>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+            <div class="empty-gallery" id="emptyGallery">Aucun meme sauvegarde.</div>
+        </div>
+    </div>
+
+    <button class="gallery-trigger" id="galleryTrigger" aria-label="Galerie">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+    </button>
+
+    <script src="app.js"></script>
+</body>
+</html>
